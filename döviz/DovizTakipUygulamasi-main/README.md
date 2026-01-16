@@ -1,59 +1,82 @@
-# Döviz Takip Konsol Uygulaması
+Döviz Kuru Takip Konsol Programı
 
-Bu proje, Görsel Programlama dersi kapsamında geliştirilmiş, gerçek zamanlı veri çeken ve bu veriler üzerinde filtreleme, sıralama ve istatistiksel işlemler yapan bir C# Konsol uygulamasıdır.
+Bu çalışma, Görsel Programlama dersi kapsamında hazırlanmış; gerçek zamanlı döviz verilerini internet üzerinden alabilen ve bu veriler üzerinde listeleme, filtreleme, sıralama ve istatistiksel analizler yapabilen bir C# Konsol uygulamasıdır.
 
-## Proje Bilgileri
+Proje Detayları
 
-* **Geliştiren:** Ömer Faruk SAĞLAM
-* **Ders Sorumlusu:** Emrah SARIÇİÇEK
-* **Programlama Dili:** C#
-* **Proje Türü:** Konsol Uygulaması (Console Application)
+Geliştirici: Meriç Aydemir
 
-## Proje Tanımı ve Amacı
+Dersin Öğretim Elemanı: Emrah SARIÇİÇEK
 
-Bu uygulamanın amacı, "Frankfurter FREE API" servisini kullanarak anlık döviz kurlarını çekmek ve kullanıcıya bu veriler üzerinde LINQ sorguları ile işlem yapma imkanı sunmaktır. Uygulama, nesne tabanlı programlama prensiplerine (OOP) ve katmanlı mimari mantığına uygun olarak tasarlanmıştır.
+Kullanılan Dil: C#
 
-## Teknik Özellikler ve Kullanılan Teknolojiler
+Uygulama Türü: Console Application
 
-Proje geliştirilirken aşağıdaki teknoloji ve kütüphaneler kullanılmıştır:
+Projenin Amacı ve Kapsamı
 
-* **HttpClient:** API üzerinden HTTP istekleri atmak ve veri çekmek için kullanılmıştır.
-* **Async / Await:** API çağrılarının asenkron olarak yapılması ve arayüzün donmaması için kullanılmıştır.
-* **LINQ (Language Integrated Query):** Veri listeleme, filtreleme, sıralama ve istatistik hesaplamaları (Where, Select, OrderBy, Average, Max, Min) için kullanılmıştır.
-* **Newtonsoft.Json:** API'den gelen JSON formatındaki veriyi C# nesnelerine (Deserialize) dönüştürmek için kullanılmıştır.
-* **Try-Catch Blokları:** Olası internet bağlantı hataları ve veri tipi uyuşmazlıklarını (örn: sayı yerine harf girilmesi) yönetmek için kullanılmıştır.
+Bu uygulamanın temel hedefi, Frankfurter FREE API üzerinden güncel döviz kurlarını anlık olarak çekmek ve elde edilen veriler üzerinde kullanıcıya LINQ tabanlı sorgular ile işlem yapma olanağı sunmaktır. Proje, Nesne Yönelimli Programlama (OOP) ilkelerine uygun olarak geliştirilmiş ve katmanlı mimari yaklaşımı dikkate alınarak tasarlanmıştır.
 
-## Uygulama Özellikleri (Menü İşlevleri)
+Kullanılan Teknolojiler ve Teknik Altyapı
 
-Uygulama kullanıcıya aşağıdaki işlevleri sunmaktadır:
+Proje geliştirme sürecinde aşağıdaki yapı ve teknolojilerden yararlanılmıştır:
 
-1.  **Tüm Dövizleri Listele:** API'den çekilen güncel kur listesini tablo formatında gösterir.
-2.  **Koda Göre Arama:** Kullanıcının girdiği döviz koduna (örn: USD, EUR) göre arama yapar. Büyük/küçük harf duyarlılığı yoktur.
-3.  **Değere Göre Filtreleme:** Kullanıcının belirlediği bir kur değerinin üzerindeki dövizleri listeler.
-4.  **Sıralama:** Döviz kurlarını "Küçükten Büyüğe" veya "Büyükten Küçüğe" şeklinde sıralama imkanı sunar.
-5.  **İstatistiksel Özet:** Toplam döviz sayısı, en yüksek kur, en düşük kur ve ortalama kur bilgisini hesaplayarak gösterir.
+HttpClient: API ile iletişim kurmak ve döviz verilerini almak amacıyla kullanılmıştır.
 
-## Proje Dosya Yapısı
+Async / Await: API isteklerinin asenkron çalışmasını sağlayarak uygulamanın akışının kesintiye uğramaması hedeflenmiştir.
 
-Proje, Sorumlulukların Ayrılığı (Separation of Concerns) ilkesine göre dosyalara bölünmüştür:
+LINQ: Döviz verileri üzerinde filtreleme, sıralama ve istatistiksel hesaplamalar (Where, Select, OrderBy, Average, Max, Min) yapmak için tercih edilmiştir.
 
-* **Program.cs:** Uygulamanın giriş noktasıdır. Kullanıcı menüsü, renkli ekran çıktıları ve kullanıcı etkileşimi burada yönetilir.
-* **DovizService.cs:** İş mantığı katmanıdır. API bağlantısı ve LINQ sorguları bu sınıfta bulunur.
-* **Currency.cs:** Uygulama içinde kullanılan temel döviz modelidir.
-* **CurrencyResponse.cs:** API'den gelen JSON verisini karşılamak için kullanılan veri transfer modelidir.
+Newtonsoft.Json: API’den dönen JSON verilerinin C# nesnelerine dönüştürülmesi (Deserialize) için kullanılmıştır.
 
-## Kurulum ve Çalıştırma
+Try-Catch Yapıları: İnternet bağlantı problemleri ve kullanıcıdan alınan hatalı girişler gibi olası hataların kontrol altına alınması amacıyla eklenmiştir.
 
-Projeyi kendi bilgisayarınızda çalıştırmak için aşağıdaki adımları izleyebilirsiniz:
+Uygulama Fonksiyonları (Menü Seçenekleri)
 
-1.  Projeyi bilgisayarınıza indirin veya kopyalayın.
-2.  Proje klasöründe terminali açın.
-3.  Gerekli JSON kütüphanesini yüklemek için şu komutu çalıştırın:
-    `dotnet add package Newtonsoft.Json`
-4.  Projeyi derlemek ve çalıştırmak için şu komutu kullanın:
-    `dotnet run`
+Uygulama içerisinde kullanıcıya sunulan temel işlemler şunlardır:
 
-## Veri Kaynağı
+Tüm Dövizleri Görüntüleme: API’den alınan güncel döviz kurlarını tablo şeklinde ekrana yazdırır.
 
-Uygulama, döviz verilerini aşağıdaki açık kaynak API üzerinden temin etmektedir:
-`https://api.frankfurter.app/latest?from=TRY`
+Döviz Kodu ile Arama: Girilen döviz koduna (USD, EUR vb.) göre arama yapar; harf duyarlılığı bulunmaz.
+
+Kur Değerine Göre Filtreleme: Kullanıcının belirlediği değerin üzerinde olan dövizleri listeler.
+
+Sıralama İşlemleri: Döviz kurlarını artan veya azalan sıraya göre sıralama imkanı sunar.
+
+İstatistiksel Bilgiler: Toplam döviz adedi, en yüksek ve en düşük kur ile ortalama kur değerlerini hesaplayarak gösterir.
+
+Proje Dosya Yapısı
+
+Proje, Sorumlulukların Ayrılması (Separation of Concerns) prensibine uygun biçimde yapılandırılmıştır:
+
+Program.cs: Uygulamanın başlangıç noktasıdır. Menü sistemi, kullanıcıdan alınan girdiler ve konsol çıktıları burada yönetilir.
+
+DovizService.cs: İş kurallarının yer aldığı katmandır. API bağlantıları ve LINQ işlemleri bu dosyada gerçekleştirilir.
+
+Currency.cs: Uygulamada kullanılan döviz modelini temsil eder.
+
+CurrencyResponse.cs: API’den dönen JSON verisini karşılayan veri transfer sınıfıdır.
+
+Kurulum ve Çalıştırma Adımları
+
+Uygulamayı yerel bilgisayarınızda çalıştırmak için aşağıdaki adımları izleyebilirsiniz:
+
+Proje dosyalarını bilgisayarınıza indirin veya kopyalayın.
+
+Proje dizininde bir terminal penceresi açın.
+
+Gerekli JSON kütüphanesini yüklemek için aşağıdaki komutu çalıştırın:
+dotnet add package Newtonsoft.Json
+
+Uygulamayı derlemek ve çalıştırmak için şu komutu kullanın:
+dotnet run
+
+Bu Projede Neler Öğrenildi
+
+Bu proje sayesinde, C# dili kullanılarak gerçek zamanlı veri çeken bir konsol uygulamasının nasıl geliştirileceği öğrenilmiştir. Özellikle harici bir REST API ile bağlantı kurulması, bu API’den gelen verilerin işlenmesi ve kullanıcıya anlamlı şekilde sunulması konusunda pratik kazanılmıştır.
+
+Uygulama geliştirme sürecinde HttpClient kullanılarak API üzerinden veri çekme, Async / Await yapısı ile asenkron programlama mantığını kavrama ve uygulamanın akışını bloklamadan çalıştırma becerisi elde edilmiştir. API’den dönen JSON formatındaki verilerin Newtonsoft.Json kütüphanesi yardımıyla C# nesnelerine dönüştürülmesi konusunda deneyim kazanılmıştır.
+
+Ayrıca LINQ kullanılarak veri listeleme, filtreleme, sıralama ve istatistiksel hesaplamalar yapılmış; bu sayede koleksiyonlar üzerinde etkili ve okunabilir sorgular yazma yetkinliği geliştirilmiştir. Try-Catch blokları ile hata yönetimi sağlanarak kullanıcıdan veya bağlantıdan kaynaklanan hataların nasıl kontrol altına alınacağı öğrenilmiştir.
+
+Proje, Nesne Yönelimli Programlama (OOP) ilkelerine ve katmanlı mimari yaklaşımına uygun şekilde tasarlandığı için, sınıflar arası sorumluluk dağılımı, kodun okunabilirliği ve sürdürülebilirliği konularında önemli kazanımlar sağlamıştır. Genel olarak bu çalışma, gerçek hayatta kullanılan veri servisleri ile çalışan konsol uygulamalarının geliştirilmesi konusunda kapsamlı bir deneyim sunmuştur.
+Meriç aydemir 20230108049
